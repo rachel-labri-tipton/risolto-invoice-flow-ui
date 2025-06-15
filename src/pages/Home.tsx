@@ -1,7 +1,13 @@
 
 import { Button } from "@/components/ui/button";
 
-export default function Home() {
+export default function Home({
+  loggedIn,
+  onLogin,
+}: {
+  loggedIn?: boolean;
+  onLogin?: () => void;
+}) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-[#ecf0fa] to-[#ddeaff] flex flex-col items-center justify-center px-4 py-20 font-sans">
       <div className="max-w-2xl w-full text-center space-y-8 py-10">
@@ -20,11 +26,21 @@ export default function Home() {
           <li><b>Secure & Flexible:</b> Built on enterprise-grade technology with real-time updates and role-based access.</li>
         </ul>
         <div>
-          <Button asChild size="lg" className="text-lg px-8 py-4 rounded-full">
-            <a href="/dashboard">
-              🚀 Try the Demo
-            </a>
-          </Button>
+          {!loggedIn ? (
+            <Button
+              size="lg"
+              className="text-lg px-8 py-4 rounded-full"
+              onClick={onLogin}
+            >
+              <span className="inline-flex items-center gap-2">
+                <span>🚀 Login / Sign Up</span>
+              </span>
+            </Button>
+          ) : (
+            <Button asChild size="lg" className="text-lg px-8 py-4 rounded-full">
+              <a href="/dashboard">Go to Dashboard</a>
+            </Button>
+          )}
         </div>
         <p className="mt-6 text-xs text-gray-400">
           Built with React, Supabase, shadcn/ui, Tailwind CSS.<br/> Not connected to real payment or production data.
