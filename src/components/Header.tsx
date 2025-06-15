@@ -1,7 +1,7 @@
-
 import { RISOLTO_BRAND } from "@/brand";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 const ROLES = ["Admin", "Manager", "Processor", "Viewer"] as const;
 
@@ -15,6 +15,8 @@ export default function Header({
   setRole: (r: UserRole) => void;
 }) {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+
   return (
     <header className="w-full bg-white border-b border-gray-200 flex items-center px-8 py-3 z-10 relative">
       <div className="flex-1 flex items-center gap-6">
@@ -23,8 +25,12 @@ export default function Header({
           {RISOLTO_BRAND.name}
         </span>
         <nav className="flex gap-4 font-semibold text-base">
-          <a href="/" className="hover:text-risolto-blue transition">Dashboard</a>
-          <a href="/upload" className="hover:text-risolto-blue transition">Upload Invoice</a>
+          <a href="/" className={`hover:text-risolto-blue transition${location.pathname === "/" ? " underline font-bold" : ""}`}>Dashboard</a>
+          <a href="/upload" className={`hover:text-risolto-blue transition${location.pathname === "/upload" ? " underline font-bold" : ""}`}>Upload Invoice</a>
+          {/* Rule Config link (Admins only) */}
+          {role === "Admin" && (
+            <a href="/rules" className={`hover:text-risolto-blue transition${location.pathname === "/rules" ? " underline font-bold" : ""}`}>Rules</a>
+          )}
         </nav>
       </div>
       {/* Role selector */}

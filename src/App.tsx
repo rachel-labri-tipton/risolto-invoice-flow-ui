@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Upload from "./pages/Upload";
 import InvoiceDetail from "./pages/InvoiceDetail";
+import RuleConfig from "./pages/RuleConfig";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/invoice/:invoiceId" element={<InvoiceDetail />} />
+          <Route path="/rules" element={<RuleConfig />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
