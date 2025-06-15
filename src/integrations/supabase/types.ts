@@ -116,6 +116,7 @@ export type Database = {
           email: string
           id: string
           languages: string[]
+          leader_id: string
           name: string
           specialization: string
           success_rate: number
@@ -126,6 +127,7 @@ export type Database = {
           email: string
           id: string
           languages: string[]
+          leader_id: string
           name: string
           specialization: string
           success_rate: number
@@ -136,6 +138,7 @@ export type Database = {
           email?: string
           id?: string
           languages?: string[]
+          leader_id?: string
           name?: string
           specialization?: string
           success_rate?: number
