@@ -1,4 +1,3 @@
-
 import { useParams, useNavigate } from "react-router-dom";
 import { useInvoices } from "@/hooks/useInvoices";
 import Header, { UserRole } from "@/components/Header";
@@ -6,6 +5,7 @@ import WorkflowTimeline from "@/components/WorkflowTimeline";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import RoleGate from "@/components/RoleGate";
+import ApprovalChain from "@/components/ApprovalChain";
 
 const ROLES = ["Admin", "Manager", "Processor", "Viewer"] as const;
 
@@ -51,6 +51,9 @@ export default function InvoiceDetail() {
               <div>Amount: <span className="font-semibold">${invoice.amount.toFixed(2)}</span></div>
               <div>Date: {invoice.date}</div>
               <div>Uploaded By: {invoice.uploadedBy}</div>
+            </div>
+            <div className="my-5">
+              <ApprovalChain invoice={invoice} />
             </div>
             <div className="flex gap-3 mt-4">
               <RoleGate role={role} allow={["Admin", "Manager"]}>
