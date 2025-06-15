@@ -49,7 +49,10 @@ export default function ApprovalChain({ invoice }: { invoice: any }) {
           const delegate = getDelegateFor(step.role);
           const approved = wasStepApproved(step);
           return (
-            <div key={step.level} className="flex flex-col items-center min-w-[100px] sm:min-w-[120px]">
+            <div
+              key={step.level}
+              className="flex flex-col items-center min-w-[100px] sm:min-w-[120px] px-1"
+            >
               <div
                 className={`rounded-full h-9 w-9 sm:h-10 sm:w-10 flex items-center justify-center mb-1
                   ${approved ? "bg-green-200 text-green-700" : idx === 0 || !chain[idx - 1].approver ? "bg-yellow-100 text-yellow-700" : "bg-gray-200 text-gray-500"}
@@ -58,7 +61,11 @@ export default function ApprovalChain({ invoice }: { invoice: any }) {
               >
                 {step.level}
               </div>
-              <div className={`text-xs sm:text-[13px] font-semibold uppercase tracking-tight ${approved ? 'text-green-700' : 'text-gray-700'}`}>
+              <div
+                className={`text-xs sm:text-[13px] font-semibold uppercase tracking-tight ${
+                  approved ? "text-green-700" : "text-gray-700"
+                } text-center`}
+              >
                 {step.role}
                 {delegate && (
                   <span className="block text-[9px] sm:text-[10px] text-blue-600 normal-case font-normal">
@@ -66,7 +73,7 @@ export default function ApprovalChain({ invoice }: { invoice: any }) {
                   </span>
                 )}
               </div>
-              <div className="text-xs text-muted-foreground mb-1 text-nowrap">
+              <div className="text-xs text-muted-foreground mb-1 text-nowrap text-center max-w-[90px]">
                 {approved
                   ? getApproverDisplay(step)
                   : idx === 0 || chain[idx - 1].approver
