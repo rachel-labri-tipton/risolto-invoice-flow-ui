@@ -1,8 +1,7 @@
-
 import { useState } from "react";
 import { useInvoices, Invoice } from "@/hooks/useInvoices";
 import { Link } from "react-router-dom";
-import { BadgeCheck, Ban, check } from "lucide-react";
+import { BadgeCheck, Ban, Check } from "lucide-react";
 import { UserRole } from "./Header";
 import RoleGate from "./RoleGate";
 import { Button } from "@/components/ui/button";
@@ -126,7 +125,7 @@ export default function InvoiceTable({ role }: { role: UserRole }) {
               size="sm"
               className="bg-green-600 hover:bg-green-700 text-white"
             >
-              <check className="w-4 h-4 mr-1" /> Bulk Approve
+              <Check className="w-4 h-4 mr-1" /> Bulk Approve
             </Button>
             <Button variant="ghost" size="sm" onClick={() => setSelected([])}>
               Cancel
