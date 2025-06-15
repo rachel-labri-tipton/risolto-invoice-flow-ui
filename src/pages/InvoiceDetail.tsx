@@ -6,6 +6,7 @@ import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import RoleGate from "@/components/RoleGate";
 import ApprovalChain from "@/components/ApprovalChain";
+import DelegateSetting from "@/components/DelegateSetting";
 
 const ROLES = ["Admin", "Manager", "Processor", "Viewer"] as const;
 
@@ -51,6 +52,10 @@ export default function InvoiceDetail() {
               <div>Amount: <span className="font-semibold">${invoice.amount.toFixed(2)}</span></div>
               <div>Date: {invoice.date}</div>
               <div>Uploaded By: {invoice.uploadedBy}</div>
+            </div>
+            {/* NEW: Delegate setting UI */}
+            <div className="my-5">
+              <DelegateSetting currentUser={role} />
             </div>
             <div className="my-5">
               <ApprovalChain invoice={invoice} />
