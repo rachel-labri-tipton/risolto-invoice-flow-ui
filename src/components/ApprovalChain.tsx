@@ -3,7 +3,7 @@ import { Invoice } from "@/hooks/useInvoices";
 import { getDelegateFor } from "@/utils/delegation";
 
 export default function ApprovalChain({ invoice }: { invoice: any }) {
-  const chain: ApprovalLevel[] = getApprovalChainForInvoice(invoice);
+  const chain = getApprovalChainForInvoice(invoice);
 
   // Determine which approvers (incl. delegate) can approve each step.
   function getApproverDisplay(step: ApprovalLevel) {
@@ -44,24 +44,24 @@ export default function ApprovalChain({ invoice }: { invoice: any }) {
 
   return (
     <div className="w-full overflow-x-auto">
-      <div className="flex gap-1 md:gap-4 items-center py-3">
+      <div className="flex gap-2 md:gap-4 items-center py-3 min-w-[340px] sm:min-w-0">
         {chain.map((step, idx) => {
           const delegate = getDelegateFor(step.role);
           const approved = wasStepApproved(step);
           return (
-            <div key={step.level} className={`flex flex-col items-center min-w-[120px]`}>
+            <div key={step.level} className="flex flex-col items-center min-w-[100px] sm:min-w-[120px]">
               <div
-                className={`rounded-full h-10 w-10 flex items-center justify-center mb-1
+                className={`rounded-full h-9 w-9 sm:h-10 sm:w-10 flex items-center justify-center mb-1
                   ${approved ? "bg-green-200 text-green-700" : idx === 0 || !chain[idx - 1].approver ? "bg-yellow-100 text-yellow-700" : "bg-gray-200 text-gray-500"}
                   border-2 ${approved ? "border-green-400" : idx === 0 || !chain[idx - 1].approver ? "border-yellow-400" : "border-gray-300"}
                   font-bold`}
               >
                 {step.level}
               </div>
-              <div className={`text-xs font-semibold uppercase tracking-tight ${approved ? 'text-green-700' : 'text-gray-700'}`}>
+              <div className={`text-xs sm:text-[13px] font-semibold uppercase tracking-tight ${approved ? 'text-green-700' : 'text-gray-700'}`}>
                 {step.role}
                 {delegate && (
-                  <span className="block text-[10px] text-blue-600 normal-case font-normal">
+                  <span className="block text-[9px] sm:text-[10px] text-blue-600 normal-case font-normal">
                     Delegate: {delegate}
                   </span>
                 )}
@@ -74,8 +74,8 @@ export default function ApprovalChain({ invoice }: { invoice: any }) {
                   : <span>Waiting</span>}
               </div>
               {idx < chain.length - 1 && (
-                <div className="h-8 flex flex-col justify-center">
-                  <div className="w-1 h-8 bg-gray-300 rounded mx-auto" />
+                <div className="h-6 sm:h-8 flex flex-col justify-center">
+                  <div className="w-1 h-6 sm:h-8 bg-gray-300 rounded mx-auto" />
                 </div>
               )}
             </div>
