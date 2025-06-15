@@ -109,6 +109,39 @@ export type Database = {
           },
         ]
       }
+      team_members: {
+        Row: {
+          active_invoices: number
+          average_resolution_days: number
+          email: string
+          id: string
+          languages: string[]
+          name: string
+          specialization: string
+          success_rate: number
+        }
+        Insert: {
+          active_invoices: number
+          average_resolution_days: number
+          email: string
+          id: string
+          languages: string[]
+          name: string
+          specialization: string
+          success_rate: number
+        }
+        Update: {
+          active_invoices?: number
+          average_resolution_days?: number
+          email?: string
+          id?: string
+          languages?: string[]
+          name?: string
+          specialization?: string
+          success_rate?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
