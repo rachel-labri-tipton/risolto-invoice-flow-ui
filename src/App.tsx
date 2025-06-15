@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,6 +10,7 @@ import Upload from "./pages/Upload";
 import InvoiceDetail from "./pages/InvoiceDetail";
 import RuleConfig from "./pages/RuleConfig";
 import TeamMembersPage from "./pages/TeamMembers";
+import Home from "./pages/Home";
 
 const queryClient = new QueryClient();
 
@@ -19,7 +21,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Index />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/invoice/:invoiceId" element={<InvoiceDetail />} />
           <Route path="/rules" element={<RuleConfig />} />
