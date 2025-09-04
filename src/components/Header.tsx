@@ -2,7 +2,7 @@
 import { RISOLTO_BRAND } from "@/brand";
 import { useState } from "react";
 import { ChevronDown, LogIn, User } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 const ROLES = ["Admin", "Manager", "Processor", "Viewer"] as const;
 export type UserRole = typeof ROLES[number];
@@ -32,47 +32,35 @@ export default function Header({
           {RISOLTO_BRAND.name}
         </a>
         <nav className="flex gap-4 font-semibold text-base">
-          <a
-            href="/"
-            className={`hover:text-risolto-blue transition${location.pathname === "/" ? " underline font-bold" : ""}`}
-          >
-            Home
-          </a>
+        <Link
+  to="/"
+  className={`hover:text-risolto-blue transition${location.pathname === "/" ? " underline font-bold" : ""}`}
+>
+  Home
+</Link>
           {loggedIn && (
-            <>
-              <a
-                href="/dashboard"
-                className={`hover:text-risolto-blue transition${
-                  location.pathname === "/dashboard"
-                    ? " underline font-bold"
-                    : ""
-                }`}
-              >
-                Dashboard
-              </a>
-              <a
-                href="/upload"
-                className={`hover:text-risolto-blue transition${
-                  location.pathname === "/upload"
-                    ? " underline font-bold"
-                    : ""
-                }`}
-              >
-                Upload Invoice
-              </a>
+  <>
+    <Link
+      to="/dashboard"
+      className={`hover:text-risolto-blue transition${location.pathname === "/dashboard" ? " underline font-bold" : ""}`}
+    >
+      Dashboard
+    </Link>
+    <Link
+      to="/upload"
+      className={`hover:text-risolto-blue transition${location.pathname === "/upload" ? " underline font-bold" : ""}`}
+    >
+      Upload Invoice
+    </Link>
               {/* Rule Config link (Admins only) */}
               {role === "Admin" && (
-                <a
-                  href="/rules"
-                  className={`hover:text-risolto-blue transition${
-                    location.pathname === "/rules"
-                      ? " underline font-bold"
-                      : ""
-                  }`}
-                >
-                  Rules
-                </a>
-              )}
+      <Link
+        to="/rules"
+        className={`hover:text-risolto-blue transition${location.pathname === "/rules" ? " underline font-bold" : ""}`}
+      >
+        Rules
+      </Link>
+    )}
             </>
           )}
         </nav>

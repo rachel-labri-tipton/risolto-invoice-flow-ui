@@ -10,7 +10,6 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-gradient-to-tr from-white via-[#e3ebfd] to-[#f7f9fa] pb-24 font-sans">
-      <Header role={role} setRole={setRole} />
       <main className="max-w-7xl mx-auto px-8 mt-10">
         <h1 className="text-3xl font-extrabold text-risolto-blue mb-2 tracking-tight">Invoice Dashboard</h1>
         <p className="text-base text-muted-foreground mb-6">

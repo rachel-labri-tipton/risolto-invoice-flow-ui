@@ -42,7 +42,6 @@ export default function InvoiceDetail() {
 
   return (
     <div className="min-h-screen bg-gradient-to-tr from-white via-[#e3ebfd] to-[#f7f9fa] font-sans">
-      <Header role={role} setRole={setRole} />
       <main className="max-w-4xl mx-auto px-8 mt-10">
         <div className="bg-white/95 shadow-lg rounded-xl p-8 flex flex-col gap-6">
           <div>

@@ -1,5 +1,6 @@
 
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export default function Home({
   loggedIn,
@@ -38,7 +39,7 @@ export default function Home({
             </Button>
           ) : (
             <Button asChild size="lg" className="text-lg px-8 py-4 rounded-full">
-              <a href="/dashboard">Go to Dashboard</a>
+              <Link to="/dashboard">Go to Dashboard</Link>
             </Button>
           )}
         </div>

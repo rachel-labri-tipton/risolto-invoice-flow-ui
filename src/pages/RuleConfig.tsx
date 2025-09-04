@@ -22,7 +22,6 @@ export default function RuleConfig() {
   if (role !== "Admin") {
     return (
       <div>
-        <Header role={role} setRole={setRole} />
         <div className="max-w-xl mx-auto p-8 mt-10 text-red-600 font-semibold bg-white rounded shadow">
           Access denied. Only Admins can configure rules.
         </div>

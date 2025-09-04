@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Upload from "./pages/Upload";
@@ -25,7 +25,7 @@ function App() {
   // Default role for prototype; only relevant when logged in
   const [role, setRole] = useState<UserRole>("Admin");
   const [loggedIn, setLoggedIn] = useState(false);
-
+  const navigate = useNavigate();
   // Sync login state with localStorage
   useEffect(() => {
     const lsLogged = localStorage.getItem(LOGIN_KEY) === "true";
@@ -47,7 +47,7 @@ function App() {
   const login = () => {
     localStorage.setItem(LOGIN_KEY, "true");
     setLoggedIn(true);
-    window.location.href = "/dashboard";
+    navigate("/dashboard");
   };
 
   // Logout: clear flag/role and return home
@@ -55,7 +55,7 @@ function App() {
     localStorage.removeItem(LOGIN_KEY);
     localStorage.removeItem(ROLE_KEY);
     setLoggedIn(false);
-    window.location.href = "/";
+    navigate("/");
   };
 
   return (
@@ -63,7 +63,6 @@ function App() {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
           <Header
             role={role}
             setRole={setRole}
@@ -114,7 +113,6 @@ function App() {
             />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
   );
