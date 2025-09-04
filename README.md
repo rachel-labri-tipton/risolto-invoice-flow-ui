@@ -1,8 +1,87 @@
-# Welcome to your Lovable project
+# Risolto Invoice Flow UI (a tiny Lovable project)
 
-## Project info
+A React + Vite web application for managing and analyzing invoices.
+
+This is a small project I built one weekend when `Lovable` was offering unlimited prompts for the weekend. I took a couple hours in the afternoon to build an `Invoice Application`. I was interviewing the next day for a role with a company that's building a tool to process invoices. They hadn't sent me the demo I requestted, so I wanted to imagine what their tool might look like. 
+
+I collaborated with Claude imagining what type of users the app might have and what the workflow might be. How the database might be designed. 
+
+I also wanted to explore prompt engineering. Between Claude and Lovable, I was able to come up with this app in a couple hours. 
+
+I also used my unlimited prompts that afternoon to sketch out the initial components for my calendar app.
+
+Having never worked with Supabase, this was also a new technology.
+
+The project felt fun and creative and fast: 
 
 **URL**: https://lovable.dev/projects/1687f39e-59fb-4d0e-91a5-2a31c89bedc7
+
+## Features
+
+- Dashboard with analytics cards
+- Invoice upload and detail view
+- Role-based access (Admin, Team Member, etc.)
+- Protected routes (login required)
+- Team member management
+- Rule configuration (Admin only)
+- Responsive UI
+
+## Tech Stack
+
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [React Router](https://reactrouter.com/)
+- [Lucide Icons](https://lucide.dev/)
+- [lovable-tagger](https://www.npmjs.com/package/lovable-tagger)
+
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18+ recommended)
+- npm
+
+### Installation
+
+```sh
+npm install
+```
+
+### Building for Production
+
+```sh
+npm run build
+```
+
+### Project Structure
+
+```
+src/
+  components/      # Reusable UI components
+  pages/           # Route-based pages
+  hooks/           # Custom React hooks
+  App.tsx          # Main app component with routing
+  main.tsx         # Entry point
+```
+
+## Routing
+
+- `/` — Home
+- `/dashboard` — Dashboard (protected)
+- `/upload` — Upload Invoice (protected)
+- `/invoice/:invoiceId` — Invoice Detail (protected)
+- `/rules` — Rule Config (Admin only)
+- `/teammembers` — Team Members (protected)
+
+## License
+
+MIT
+
+
+
+
+### Ok, here's some of the stuff from Lovable: 
 
 ## How can I edit this code?
 
